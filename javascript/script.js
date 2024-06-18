@@ -7,7 +7,20 @@ let operator = undefined;
 let operatorFlag = false;
 
 function calculate(valOne, valTwo, operand) {
-    return 1;
+    switch (operand) {
+        case "+":
+            return valOne + valTwo;
+            break;
+        case "-":
+            return valOne - valTwo;
+            break;
+        case "*":
+            return valOne * valTwo;
+            break;
+        case "÷":
+            return valOne / valTwo;
+            break;
+    }
 }
 
 btn.forEach((button) => {
