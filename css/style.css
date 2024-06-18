@@ -1,0 +1,81 @@
+:root {
+
+}
+
+#page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.calculator {
+    height: 60vh;
+    width: 40vh;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-grow: 0.2;
+    gap: 10px;
+    padding-right: 20px;
+    margin: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+}
+
+.history {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.2;
+    font-size: 12px;
+}
+
+.current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    font-size: 36px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 10px;
+    margin: 20px;
+    margin-top: 0px;
+}
+
+.row1,
+.row2,
+.row3,
+.row4,
+.row5 {
+    display: flex;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.row1 button,
+.row2 button,
+.row3 button,
+.row4 button,
+.row5 button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
