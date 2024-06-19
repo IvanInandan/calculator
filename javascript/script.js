@@ -29,8 +29,8 @@ btn.forEach((button) => {
         let val = button.getAttribute("class");
 
         if (val.includes("delete")) {
-            if(input.textContent) {
-            input.innerText = input.innerText.slice(0, -1);
+            if (input.textContent) {
+                input.innerText = input.innerText.slice(0, -1);
             }
 
             else alert("Input is already empty!");
@@ -50,27 +50,32 @@ btn.forEach((button) => {
             secondVal = Number(input.textContent);
             memory.textContent += (" " + input.textContent);
             input.textContent = calculate(firstVal, secondVal, operator);
+            operatorFlag = false;
+            secondEqualFlag = false;
         }
 
         else if (val.includes("operator")) {
             if (secondEqualFlag == true) {
                 secondVal = Number(input.textContent);
-                memory.textContent += (" " + input.textContent  + " " + button.textContent);
+                memory.textContent += (" " + input.textContent + " " + button.textContent);
                 input.textContent = firstVal = calculate(firstVal, secondVal, operator);
+                operator = button.textContent;
+                operatorFlag = true;
+                secondEqualFlag = false;
             }
 
             else {
                 firstVal = Number(input.textContent);
                 operator = button.textContent;
-                memory.textContent += (" " + input.textContent  + " " + button.textContent);
+                memory.textContent += (" " + input.textContent + " " + button.textContent);
                 operatorFlag = true;
+                secondEqualFlag = true;
             }
         }
 
         else if (val.includes("number")) {
-            if (operatorFlag == false && secondEqualFlag == false) {
+            if (operatorFlag == false) {
                 input.textContent += button.textContent;
-                secondEqualFlag = true;
             }
 
             else {
@@ -81,14 +86,16 @@ btn.forEach((button) => {
         }
 
         else if (val.includes("point")) {
-            if (operatorFlag == false && secondEqualFlag == false) {
-                input.textContent += button.textContent;
-            }
+            if (!input.textContent.includes(".")) {
+                if (operatorFlag == false) {
+                    input.textContent += button.textContent;
+                }
 
-            else {
-                input.textContent = button.textContent;
-                operatorFlag = false;
-                secondEqualFlag = true;
+                else {
+                    input.textContent = button.textContent;
+                    operatorFlag = false;
+                    secondEqualFlag = true;
+                }
             }
         }
     })
