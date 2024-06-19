@@ -5,6 +5,7 @@ let firstVal = undefined;
 let secondVal = undefined;
 let operator = undefined;
 let operatorFlag = false;
+let secondEqualFlag = false;
 
 function calculate(valOne, valTwo, operand) {
     switch (operand) {
@@ -40,6 +41,7 @@ btn.forEach((button) => {
             secondVal = undefined;
             operator = undefined;
             operatorFlag = false;
+            secondEqualFlag = false;
             memory.textContent = "";
             input.textContent = "";
         }
@@ -51,31 +53,42 @@ btn.forEach((button) => {
         }
 
         else if (val.includes("operator")) {
-            firstVal = Number(input.textContent);
-            operator = button.textContent;
-            memory.textContent += (input.textContent  + " " + button.textContent);
-            operatorFlag = true;
+            if (secondEqualFlag == true) {
+                secondVal = Number(input.textContent);
+                memory.textContent += (" " + input.textContent  + " " + button.textContent);
+                input.textContent = firstVal = calculate(firstVal, secondVal, operator);
+            }
+
+            else {
+                firstVal = Number(input.textContent);
+                operator = button.textContent;
+                memory.textContent += (" " + input.textContent  + " " + button.textContent);
+                operatorFlag = true;
+            }
         }
 
         else if (val.includes("number")) {
-            if (operatorFlag == false) {
+            if (operatorFlag == false && secondEqualFlag == false) {
                 input.textContent += button.textContent;
+                secondEqualFlag = true;
             }
 
             else {
                 input.textContent = button.textContent;
                 operatorFlag = false;
+                secondEqualFlag = true;
             }
         }
 
         else if (val.includes("point")) {
-            if (operatorFlag == false) {
+            if (operatorFlag == false && secondEqualFlag == false) {
                 input.textContent += button.textContent;
             }
 
             else {
                 input.textContent = button.textContent;
                 operatorFlag = false;
+                secondEqualFlag = true;
             }
         }
     })

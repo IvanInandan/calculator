@@ -2,10 +2,17 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "Roboto";
+    font-weight: 400;
 }
 
 :root {
-
+    --background-color: #3c3836;
+    --delete-color: #cc241d;
+    --clear-color: #d79921;
+    --numbers-color: #458588;
+    --operators-color: #8ec07c;
+    --screen-color: #f2e5bc;
 }
 
 #page {
@@ -22,6 +29,7 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    background-color: var(--background-color);
 }
 
 .screen {
@@ -32,6 +40,7 @@
     text-align: right;
     word-wrap: break-word;
     word-break: break-all;
+    background-color: var(--screen-color);
 }
 
 .history {
@@ -54,6 +63,16 @@
     margin-top: 0px;
 }
 
+button {
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+button:hover {
+    transform: scale(1.05);
+    opacity: 80%;
+}
+
 .row1,
 .row2,
 .row3,
@@ -73,4 +92,20 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+}
+
+.clear {
+    background-color: var(--clear-color);
+}
+
+.delete {
+    background-color: var(--delete-color);
+}
+
+.number, .point, .equal{
+    background-color: var(--numbers-color);
+}
+
+.operator {
+    background-color: var(--operators-color);
 }
